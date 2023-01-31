@@ -2,13 +2,16 @@ import json
 from pokemon import Pokemon
 import aiohttp
 import asyncio
+import time
+
+start_time = time.time()
 
 
 class PokeAPI:
     def __init__(self):
         self.url = 'https://pokeapi.co/api/v2/'
 
-    async def get_pokemon(self, offset=0, limit=40):
+    async def get_pokemon(self, offset=0, limit=20):
         async with aiohttp.ClientSession() as session:
             async with session.get(f"{self.url}pokemon?offset={offset}&limit={limit}") as response:
                 if response.status != 200:
@@ -47,3 +50,5 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
+
+print("--- %s seconds ---" % (time.time() - start_time))
