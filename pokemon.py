@@ -20,7 +20,6 @@ class Pokemon:
                                  range(len(resultado['stats']))}
 
             self._moves = [resultado['moves'][i]['move']['name'] for i in range(len(resultado['moves']))]
-            # self._locations = self.__get_location(kwargs['location_area_encounters'])
             self._locations = self.__get_location(resultado['location_area_encounters'])
 
         def __get_location(self, url: str) -> List[str]:
