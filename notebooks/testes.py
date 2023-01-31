@@ -1,5 +1,4 @@
 import json
-from pokemon import Pokemon
 import aiohttp
 import asyncio
 import time
@@ -11,9 +10,9 @@ class PokeAPI:
     def __init__(self):
         self.url = 'https://pokeapi.co/api/v2/'
 
-    async def get_pokemon(self, offset=0, limit=20):
+    async def get_pokemon(self, indice: int):
         async with aiohttp.ClientSession() as session:
-            async with session.get(f"{self.url}pokemon?offset={offset}&limit={limit}") as response:
+            async with session.get(f'{self.url}pokemon/{indice}/') as response:
                 if response.status != 200:
                     return None
                 data = json.loads(await response.text())
@@ -24,19 +23,16 @@ class PokemonService:
     def __init__(self, api: PokeAPI):
         self.api = api
 
-    async def get_url_pokemons(self):
-        url_pokemons = []
-        offset = 0
-        limit = 20
+    async def get_url_pokemons(self, inicio, fim):
+        pokemons = []
         i = 1
-        while True:
-            data = await self.api.get_pokemon(offset, limit)
-            if data['next'] is None:
-                break
-            url_pokemons += [dados['url'] for dados in data['results']]
-            offset += limit
+        for indice in range(inicio, fim + 1):
+            print(i)
+            data = await self.api.get_pokemon(indice)
+            pokemons.append(data)
             i += 1
-        return url_pokemons
+
+        return pokemons
 
 
 api = PokeAPI()
@@ -44,7 +40,7 @@ service = PokemonService(api)
 
 
 async def main():
-    pokemons = await service.get_url_pokemons()
+    pokemons = await service.get_url_pokemons(1, 100)
     print(pokemons)
 
 
