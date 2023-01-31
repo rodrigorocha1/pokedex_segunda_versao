@@ -22,18 +22,18 @@ class PokemonService:
         self.api = api
 
     async def get_url_pokemons(self):
-        pokemons = []
+        url_pokemons = []
         offset = 0
         limit = 20
         i = 1
         while True:
             data = await self.api.get_pokemon(offset, limit)
-            pokemons.append((i, data['results']))
             if data['next'] is None:
                 break
+            url_pokemons += [dados['url'] for dados in data['results']]
             offset += limit
             i += 1
-        return pokemons
+        return url_pokemons
 
 
 api = PokeAPI()
@@ -42,8 +42,8 @@ service = PokemonService(api)
 
 async def main():
     pokemons = await service.get_url_pokemons()
-    for pokemon in pokemons:
-        print(pokemon)
+    print(pokemons)
+
 
 if __name__ == '__main__':
     asyncio.run(main())
