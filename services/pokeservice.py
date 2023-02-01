@@ -21,16 +21,14 @@ class PokemonService:
         :return: Uma Lista de pokemons
         """
         pokemons = []
-        i = 1
+
         for indice in range(inicio, fim + 1):
-            print(i)
             pokemons_data = await self.api.get_pokemon(indice)
             obj_pokemon = Pokemom(pokemons_data)
             pokemons.append(obj_pokemon)
-            i += 1
         return pokemons
 
-    async def obter_dados_pokemon_id(self,id_pokemon: int) -> Pokemom:
+    async def obter_dados_pokemon_id(self, id_pokemon: int) -> Pokemom:
         """
         Faz a chamada da api e retorna em um objeto
         :param id_pokemon: id do pokemon int
@@ -46,7 +44,7 @@ service = PokemonService(api)
 
 
 async def main():
-    pokemons = await service.get_lista_pokemons(1, 10)
+    pokemons = await service.get_lista_pokemons(906, 950)
     for pokemon in pokemons:
         print(pokemon.id)
         print(pokemon.name)
