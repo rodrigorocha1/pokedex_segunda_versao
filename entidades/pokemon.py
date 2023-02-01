@@ -24,6 +24,11 @@ class Pokemom:
 
         self._moves = [dados['moves'][i]['move']['name'] for i in range(len(dados['moves']))]
         self._locations = self.__get_location(dados['location_area_encounters'])
+        self._geracao = self.__verificar_geracao(self._id)
+
+    @property
+    def geracao(self):
+        return self._geracao
 
     def __get_location(self, url: str) -> List[str]:
         req = requests.get(url)
@@ -73,3 +78,41 @@ class Pokemom:
     @property
     def peso(self) -> str:
         return self._peso
+
+    def __verificar_geracao(self, id_pokemon: int) -> str:
+        if 1 <= id_pokemon <= 151:
+            return 'Kanto - 1ª Geração'
+        elif 152 <= id_pokemon <= 251:
+            return 'Johto - 2ª Geração'
+        elif 252 <= id_pokemon <= 386:
+            return 'Hoenn - 3ª Geração'
+        elif 387 <= id_pokemon <= 493:
+            return 'Hoenn - 3ª Geração'
+        elif 494 <= id_pokemon <= 649:
+            return 'Unova - 5ª Geração'
+        elif 650 <= id_pokemon <= 721:
+            return 'Kalos - 6ª Geração'
+        elif 722 <= id_pokemon <= 809:
+            return 'Alola - 7ª Geração'
+        elif 810 <= id_pokemon <= 905:
+            return 'Galar - 8ª Geração'
+        elif 906 <= id_pokemon <= 1010:
+            return 'Paldea - 9ª Geração'
+        elif 10001 <= id_pokemon <= 10032:
+            return 'Outras Formas'
+        elif 10033 <= id_pokemon <= 10090:
+            return 'Mega Formas'
+        elif 10091 <= id_pokemon <= 10115:
+            return 'Formas Alola'
+        elif 10116 <= id_pokemon <= 10160:
+            return 'Formas'
+        elif 10161 <= id_pokemon <= 10180:
+            return 'Formas Galar'
+        elif 10182 <= id_pokemon <= 10194:
+            return '+ Formas'
+        elif 10195 <= id_pokemon <= 10228:
+            return 'Formas Gmax'
+        elif 10229 <= id_pokemon <= 10244:
+            return 'Formas Hisui'
+        elif 10245 <= id_pokemon <= 10249:
+            return 'Formas Origin'
