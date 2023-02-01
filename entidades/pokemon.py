@@ -25,6 +25,16 @@ class Pokemom:
         self._moves = [dados['moves'][i]['move']['name'] for i in range(len(dados['moves']))]
         self._locations = self.__get_location(dados['location_area_encounters'])
         self._geracao = self.__verificar_geracao(self._id)
+        self._peso = dados['weight']
+        self._altura = dados['height']
+
+    @property
+    def peso(self):
+        return self._peso
+
+    @property
+    def altura(self):
+        return self._altura
 
     @property
     def geracao(self):
