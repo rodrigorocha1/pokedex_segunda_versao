@@ -44,13 +44,15 @@ service = PokemonService(api)
 
 
 async def main():
-    pokemons = await service.get_lista_pokemons(906, 950)
+    pokemons = await service.get_lista_pokemons(906, 1000)
     for pokemon in pokemons:
-        print(pokemon.id)
-        print(pokemon.name)
-        print(pokemon.tipos)
-        print(pokemon.geracao)
-        print()
+        if 'ghost' in pokemon.tipos:
+            print(pokemon.id)
+            print(pokemon.name)
+            print(pokemon.img)
+            print(pokemon.tipos)
+            print(pokemon.geracao)
+            print()
 
 
 if __name__ == '__main__':
