@@ -1,0 +1,9 @@
+Kanto - 1ª Geração : 1 - 151
+Johto - 2ª Geração : 152 - 251
+Hoenn - 3ª Geração : 252 - 386
+Sinnoh - 4ª Geração : 387 - 493
+Unova - 5ª Geração : 494 - 649
+Kalos - 6ª Geração : 650 - 721
+Alola - 7ª Geração:  722 - 809
+Galar - 8ª Geração:  810 - 905
+Paldea - 9ª Geração: 906 - 1010
