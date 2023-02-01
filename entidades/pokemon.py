@@ -90,6 +90,11 @@ class Pokemom:
         return self._peso
 
     def __verificar_geracao(self, id_pokemon: int) -> str:
+        """
+        Método para verificar a geração do pokemon
+        :param id_pokemon: id do pokemon
+        :return: Geração
+        """
         if 1 <= id_pokemon <= 151:
             return 'Kanto - 1ª Geração'
         elif 152 <= id_pokemon <= 251:
