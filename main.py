@@ -1,8 +1,12 @@
 from dash import callback_context, dcc, html
 from dash.dependencies import Input, Output, State
+from dash.exceptions import PreventUpdate
+from services.pokeservice import main
 from entidades.cortipopokemon import Cor
 from app import *
 import dash_bootstrap_components as dbc
+from asyncio import run
+from componentes.telas import tela_pokemon
 
 context = html.Div(id='id_page_content')
 
@@ -95,12 +99,22 @@ app.layout = html.Div(
                ])
 def troca_tab(tab, *_):
     ctx = callback_context
-    print(ctx.inputs)
-    print(ctx.inputs_list)
-    print(ctx.states_list)
-    print(ctx.states)
+    print('tab', tab)
+    value = ctx.states_list[0].get('value')
+    # print(ctx.inputs_list[1]['value'])
+    # print(ctx.states_list)
+    print('ctx.triggered_id', ctx.triggered_id)
+    # if ctx.inputs_list[1]['value'] == 0:
+    #     raise PreventUpdate
+
     if tab == 'id_primeira_geracao':
 
+        inicio = 1
+        fim = 5
+        lista_pokemons = run(main(inicio, fim))
+        print(lista_pokemons[0])
+
+        # return tela_pokemon(lista_pokemons, ctx.triggered_id)
         return '1'
     elif tab == 'id_segunda_geracao':
         return '2'

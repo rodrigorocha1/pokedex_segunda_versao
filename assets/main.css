@@ -7,6 +7,11 @@
     height: 100vh;
 }
 
+#id_text_pokemon {
+    background-color: #181A1B;
+    color: #FFFFFF;
+}
+
 #id_group_pokemon {
     margin-top: 30px;
     width: 60vw;
