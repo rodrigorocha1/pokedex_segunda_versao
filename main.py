@@ -1,4 +1,3 @@
-import datetime
 from dash import callback_context, dcc, html
 from dash.dependencies import Input, Output, State
 from entidades.cortipopokemon import Cor
@@ -14,10 +13,10 @@ app.layout = html.Div(
                 dbc.Col(
                     dbc.ButtonGroup(
                         [
-                            dbc.Button(cor.name.capitalize(),
-                                       id=f'{cor.name}',
-                                       style={'background-color': f'{cor.value}'}) for cor in Cor
-
+                            dbc.Button(
+                                cor.name.capitalize(),
+                                id=f'{cor.name}',
+                                style={'background-color': f'{cor.value}'}) for cor in Cor
                         ],
                         vertical=True,
                         id='id_botao_grupo_tipo'
@@ -29,10 +28,10 @@ app.layout = html.Div(
                         dbc.Row(
                             dbc.InputGroup(
                                 [
-                                    dbc.Input(id='id_numero_pokemon',
+                                    dbc.Input(id='id_text_pokemon',
                                               placeholder='digite o numero do pokemon'),
                                     dbc.Button('Pesquisar',
-                                               id='id_text_pokemon',
+                                               id='id_btn_pokemon',
                                                n_clicks=0),
                                 ],
                                 id='id_group_pokemon'
@@ -70,29 +69,38 @@ app.layout = html.Div(
                                                 tab_id='id_nona_geracao',
                                                 className='class_tab_name'),
                                     ],
-                                    active_tab='Kanto - 1ª Geração',
+                                    active_tab='id_primeira_geracao',
                                     id='id_tabs_geracao'
                                 ),
                                 html.Div(id='content')
                             ],
                             id='id_segunda_linha'
+
                         )
                     ],
                     md=10
                 )
             ]
         )
-    ]
-    ,
+    ],
     id='id_tela_principal'
 )
 
 
 @app.callback(Output('content', 'children'),
-              [Input('id_tabs_geracao', 'active_tab')])
-def troca_tab(tab):
+              [Input('id_tabs_geracao', 'active_tab'),
+               Input('id_btn_pokemon', 'n_clicks'),
+               [Input(f'{cor.name}', 'n_clicks') for cor in Cor],
+               [State('id_text_pokemon', 'value')]
+               ])
+def troca_tab(tab, *_):
+    ctx = callback_context
+    print(ctx.inputs)
+    print(ctx.inputs_list)
+    print(ctx.states_list)
+    print(ctx.states)
     if tab == 'id_primeira_geracao':
-        print(tab)
+
         return '1'
     elif tab == 'id_segunda_geracao':
         return '2'

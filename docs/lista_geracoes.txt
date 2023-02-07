@@ -7,3 +7,12 @@ Kalos - 6ª Geração : 650 - 721
 Alola - 7ª Geração:  722 - 809
 Galar - 8ª Geração:  810 - 905
 Paldea - 9ª Geração: 906 - 1010
+Outras Formas : 10001 - 10032
+Mega Formas: 10033 - 10090
+Alola Formas: 10091 - 10115
+Formas: 10116 - 10160
+Galar Formas: 10161 - 10180
++ Formas: 10182 - 10194
+Gmax Formas: 10195 - 10228
+Hisui Formas: 10229 - 10244
+Origin Formas: 10245 - 10249
