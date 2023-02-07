@@ -85,7 +85,6 @@ app.layout = html.Div(
     ]
     ,
     id='id_tela_principal'
-
 )
 
 
