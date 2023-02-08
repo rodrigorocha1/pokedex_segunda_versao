@@ -7,16 +7,11 @@
     height: 100vh;
 }
 
-#id_text_pokemon {
-    background-color: #181A1B;
-    color: #FFFFFF;
-}
-
-#id_group_pokemon {
-    margin-top: 30px;
+.inputs_dados {
     width: 60vw;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 30px auto;
+    background-color: #171717;
+    color: #FFFFFF;
 }
 
 #id_botao_grupo_tipo {
@@ -26,3 +21,19 @@
 
 }
 
+#content {
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 75vh;
+    width: 80vw;
+}
+
+.class_cards_pokemons {
+    width: 30%;
+    display: inline-block;
+    margin-top: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
