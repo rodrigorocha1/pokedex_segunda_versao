@@ -14,11 +14,15 @@ def gerar_cartoes(pokemons: List[Pokemom]):
         dbc.Card(
             dbc.CardBody(
                 [
-                    html.P(f'Card{pokemon.id}',
+                    dbc.CardImg(src=pokemon.img,
+                                id=f'{pokemon.name}',
+                                className='class_img_pokemon'),
+                    html.P(f'{pokemon.id} - {pokemon.name.title()}',
                            id=f'id_card_{pokemon.id}',
-                           style={'color': '#FFFFFF'})
+                           className='class_nome_pokemon')
                 ],
-            ), className='class_cards_pokemons'
+            ), className='class_cards_pokemons',
+            color=f'{pokemon.cor}'
         ) for pokemon in pokemons
     ]
 
@@ -27,7 +31,7 @@ def gera_tabs(tab):
     if tab == 'id_primeira_geracao':
 
         inicio = 1
-        fim = 151
+        fim = 9
         lista_pokemons = run(main(inicio, fim))
         return gerar_cartoes(pokemons=lista_pokemons), [
             {'label': f'{pokemon.id} - {pokemon.name.title()}',

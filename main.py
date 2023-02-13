@@ -1,14 +1,18 @@
-from dash import callback_context, dcc, html
+from dash import callback_context, dcc, html, Dash
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 from services.pokeservice import main
 from entidades.cortipopokemon import Cor
-from app import *
 import dash_bootstrap_components as dbc
 from asyncio import run
 from componentes.telas import gera_tabs
 
 context = html.Div(id='id_page_content')
+
+app = Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+app.config['suppress_callback_exceptions'] = True
+app.scripts.config.serve_locally = True
+server = app.server
 
 app.layout = html.Div(
     [
@@ -31,12 +35,11 @@ app.layout = html.Div(
                 dbc.Col(
                     [
                         dbc.Row(
-
                             dbc.Select(
                                 id='id_select_input_pokemon',
                                 className='inputs_dados'
-                            )
-
+                            ),
+                            id='id_linha_input'
                         ),
                         dbc.Row(
                             [
@@ -93,8 +96,9 @@ app.layout = html.Div(
                [Input(f'{cor.name}', 'n_clicks') for cor in Cor],])
 def troca_tab(tab, select_pokemon, *_):
     ctx = callback_context
+    print(ctx.triggered_id)
     return gera_tabs(tab)
 
 
 if __name__ == "__main__":
-    app.run_server(port=8051, debug=True)
+    app.run_server(port=8052, debug=True)

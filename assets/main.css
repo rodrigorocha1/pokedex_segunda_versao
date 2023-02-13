@@ -1,11 +1,13 @@
-* {
-    background-color: black;
-}
 
 #id_coluna_1 {
-    background-color: #171717;
+    background-color: #1A1C1E;
     height: 100vh;
 }
+
+#id_linha_input{
+    background-color: #1A1C1E;
+}
+
 
 .inputs_dados {
     width: 60vw;
@@ -36,4 +38,20 @@
     margin-top: 40px;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.class_img_pokemon {
+    width: 200px;
+    height: 150px;
+    margin-left: 50px;
+    top: 0px;
+}
+.class_nome_pokemon {
+    color: #FFFFFF;
+    font-size: 17px;
+    text-align: justify;
+}
+
+#id_segunda_linha {
+    background-color: #1A1C1E;
 }
