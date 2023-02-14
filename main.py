@@ -3,7 +3,7 @@ from dash.dependencies import Input, Output, State
 
 from entidades.cortipopokemon import Cor
 import dash_bootstrap_components as dbc
-from componentes.telas import gera_tabs
+from componentes.layouts import Layouts
 
 context = html.Div(id='id_page_content')
 
@@ -96,8 +96,9 @@ app.layout = html.Div(
                [Input(f'{cor.name}', 'n_clicks') for cor in Cor], ])
 def troca_tab(tab, pokemon, *_):
     ctx = callback_context
+    l = Layouts()
 
-    return gera_tabs(tab, ctx.triggered_id, pokemon)
+    return l.gerar_tabs(tab, ctx.triggered_id, pokemon)
 
 
 if __name__ == "__main__":
