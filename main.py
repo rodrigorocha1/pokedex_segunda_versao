@@ -91,11 +91,11 @@ app.layout = html.Div(
 @app.callback(Output('content', 'children'),
               Output('id_select_input_pokemon', 'options'),
               [Input('id_tabs_geracao', 'active_tab'),
-               [Input(f'{cor.name}', 'n_clicks') for cor in Cor],])
-def troca_tab(tab, select_pokemon, *_):
+               Input('id_select_input_pokemon', 'value'),
+               [Input(f'{cor.name}', 'n_clicks') for cor in Cor], ])
+def troca_tab(tab, pokemon, *_):
     ctx = callback_context
-    print(ctx.triggered_id)
-    return gera_tabs(tab, ctx.triggered_id)
+    return gera_tabs(tab, ctx.triggered_id, pokemon)
 
 
 if __name__ == "__main__":

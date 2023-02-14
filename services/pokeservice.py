@@ -48,8 +48,10 @@ async def main(inicio, fim, id_pokemon=None) -> List[Pokemom]:
         pokemons = await service.get_lista_pokemons(inicio, fim)
     else:
         pokemons = await service.obter_dados_pokemon_id(id_pokemon)
+
     return pokemons
 
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    asyncio.run(main(1, 4, 2))
+
