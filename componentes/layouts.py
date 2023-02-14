@@ -8,12 +8,19 @@ from services.pokeservice import main
 
 
 class Layouts:
-
     '''
         Classe para gerar o layout dos pokemons
     '''
 
     def gerar_tabs(self, tab, tipo=None, id_pokemon=None):
+
+        '''
+            Função para controlar as mudanças de seleção dos pokemons
+        :param tab: recebe a tab selecionado
+        :param tipo: Recebe o tipo do pokemon clicado no botão
+        :param id_pokemon: recebe o id do pokemon
+        :return: retorna os dados
+        '''
 
         if tab == 'id_primeira_geracao':
             inicio = 1
@@ -43,6 +50,14 @@ class Layouts:
         return html.P('Não selecionado')
 
     def __controle_tabs(self, inicio: int, fim: int, id_pokemon: str, tipo: str):
+        '''
+            Método para devolver um ou varios cartão
+        :param inicio: ínicio das listagens do pokemon
+        :param fim: fim das listagens do pokemon
+        :param id_pokemon: id do pokemon
+        :param tipo: tipo do pokemon selecionado
+        :return: um ou vários cartões, depedendo do que for selecionado
+        '''
         lista_pokemons = run(main(inicio, fim))
         opcoes_pokemon = [
             {'label': f'{pokemon.id} - {pokemon.name.title()}',
@@ -69,6 +84,12 @@ class Layouts:
                 ] + opcoes_pokemon
 
     def __gerar_cartoes(self, pokemons: List[Pokemom], tipo=None):
+        '''
+            Gera cartões de acordo com a seleção
+        :param pokemons: Uma lista de objeto de pokemons
+        :param tipo: O tipo de pokemons selecionado
+        :return: um ou vários cartões, depedendo do que for selecionado
+        '''
         if tipo in [cor.name for cor in Cor]:
             return dbc.Row(
                 dbc.Col(
@@ -89,6 +110,11 @@ class Layouts:
             )
 
     def __gerar_cartao(self, pokemon: Pokemom):
+        '''
+            Gera o Cartão propriamente dito
+        :param pokemon: Uma lista de objeto
+        :return: Gera um cartão
+        '''
         return \
             dbc.Card(
                 dbc.CardBody(
