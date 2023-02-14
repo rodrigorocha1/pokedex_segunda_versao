@@ -359,30 +359,61 @@ def gerar_cartoes(pokemons: List[Pokemom], tipo=None):
 def gera_tabs(tab, tipo=None, id_pokemon=None):
     if tab == 'id_primeira_geracao':
         inicio = 1
-        fim = 9
+        fim = 151
         lista_pokemons = run(main(inicio, fim))
-        if id_pokemon is None:
+        opcoes_pokemon = [
+            {'label': f'{pokemon.id} - {pokemon.name.title()}',
+             'value': f'{pokemon.id}'}
+            for pokemon in lista_pokemons
+        ]
+        if id_pokemon is None or id_pokemon == '0':
+
             return gerar_cartoes(pokemons=lista_pokemons, tipo=tipo), \
                 [
-                    {'label': f'{pokemon.id} - {pokemon.name.title()}',
-                     'value': f'{pokemon.id}'}
-                    for pokemon in lista_pokemons
-                ]
+                    {
+                        'label': 'Lista todos os pokemons',
+                        'value': 0
+                    },
+                ] + opcoes_pokemon
 
         else:
             pokemon_unico = run(main(inicio, fim, id_pokemon))
-            print('deveria mostrar um único pokemon')
-
-            return layout_pokemon_id(pokemon=pokemon_unico),  \
+            return layout_pokemon_id(pokemon=pokemon_unico), \
                 [
-                    {'label': f'{pokemon.id} - {pokemon.name.title()}',
-                     'value': f'{pokemon.id}'}
-                    for pokemon in lista_pokemons
-                ]
+                    {
+                        'label': 'Lista todos os pokemons',
+                        'value': 0
+                    },
+                ] + opcoes_pokemon
 
-        # return tela_pokemon(lista_pokemons, ctx.triggered_id)
     elif tab == 'id_segunda_geracao':
-        return '2'
+        inicio = 152
+        fim = 251
+        lista_pokemons = run(main(inicio, fim))
+        opcoes_pokemon = [
+            {'label': f'{pokemon.id} - {pokemon.name.title()}',
+             'value': f'{pokemon.id}'}
+            for pokemon in lista_pokemons
+        ]
+        if id_pokemon is None or id_pokemon == '0':
+
+            return gerar_cartoes(pokemons=lista_pokemons, tipo=tipo), \
+                [
+                    {
+                        'label': 'Lista todos os pokemons',
+                        'value': 0
+                    },
+                ] + opcoes_pokemon
+
+        else:
+            pokemon_unico = run(main(inicio, fim, id_pokemon))
+            return layout_pokemon_id(pokemon=pokemon_unico), \
+                [
+                    {
+                        'label': 'Lista todos os pokemons',
+                        'value': 0
+                    },
+                ] + opcoes_pokemon
     elif tab == 'id_terceira_geracao':
         return '3'
     elif tab == 'id_quarta_geracao':

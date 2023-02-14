@@ -35,7 +35,8 @@ app.layout = html.Div(
                         dbc.Row(
                             dbc.Select(
                                 id='id_select_input_pokemon',
-                                className='inputs_dados'
+                                className='inputs_dados',
+                                value=None
                             ),
                             id='id_linha_input'
                         ),
@@ -95,6 +96,7 @@ app.layout = html.Div(
                [Input(f'{cor.name}', 'n_clicks') for cor in Cor], ])
 def troca_tab(tab, pokemon, *_):
     ctx = callback_context
+
     return gera_tabs(tab, ctx.triggered_id, pokemon)
 
 
