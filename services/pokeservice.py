@@ -43,8 +43,11 @@ api = PokeAPI()
 service = PokemonService(api)
 
 
-async def main(inicio, fim) -> List[Pokemom]:
-    pokemons = await service.get_lista_pokemons(inicio, fim)
+async def main(inicio, fim, id_pokemon=None) -> List[Pokemom]:
+    if id_pokemon is None:
+        pokemons = await service.get_lista_pokemons(inicio, fim)
+    else:
+        pokemons = await service.obter_dados_pokemon_id(id_pokemon)
     return pokemons
 
 
