@@ -427,5 +427,31 @@ def gera_tabs(tab, tipo=None, id_pokemon=None):
     elif tab == 'id_oitava_geracao':
         return '8'
     elif tab == 'id_nona_geracao':
-        return '9'
+        inicio = 906
+        fim = 1010
+        lista_pokemons = run(main(inicio, fim))
+        opcoes_pokemon = [
+            {'label': f'{pokemon.id} - {pokemon.name.title()}',
+             'value': f'{pokemon.id}'}
+            for pokemon in lista_pokemons
+        ]
+        if id_pokemon is None or id_pokemon == '0':
+
+            return gerar_cartoes(pokemons=lista_pokemons, tipo=tipo), \
+                [
+                    {
+                        'label': 'Lista todos os pokemons',
+                        'value': 0
+                    },
+                ] + opcoes_pokemon
+
+        else:
+            pokemon_unico = run(main(inicio, fim, id_pokemon))
+            return layout_pokemon_id(pokemon=pokemon_unico), \
+                [
+                    {
+                        'label': 'Lista todos os pokemons',
+                        'value': 0
+                    },
+                ] + opcoes_pokemon
     return html.P('Não selecionado')
