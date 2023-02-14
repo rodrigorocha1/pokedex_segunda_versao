@@ -428,7 +428,7 @@ def gera_tabs(tab, tipo=None, id_pokemon=None):
         return '8'
     elif tab == 'id_nona_geracao':
         inicio = 906
-        fim = 1010
+        fim = 1008
         lista_pokemons = run(main(inicio, fim))
         opcoes_pokemon = [
             {'label': f'{pokemon.id} - {pokemon.name.title()}',
