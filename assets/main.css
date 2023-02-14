@@ -4,10 +4,15 @@
     height: 100vh;
 }
 
-#id_linha_input{
+#id_linha_input {
     background-color: #1A1C1E;
 }
 
+.class_habilidade {
+    height: 120px;
+    overflow-y: auto;
+    overflow-x: hidden
+}
 
 .inputs_dados {
     width: 60vw;
@@ -46,6 +51,7 @@
     margin-left: 50px;
     top: 0px;
 }
+
 .class_nome_pokemon {
     color: #FFFFFF;
     font-size: 17px;

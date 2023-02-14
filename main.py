@@ -97,7 +97,7 @@ app.layout = html.Div(
 def troca_tab(tab, select_pokemon, *_):
     ctx = callback_context
     print(ctx.triggered_id)
-    return gera_tabs(tab)
+    return gera_tabs(tab, ctx.triggered_id)
 
 
 if __name__ == "__main__":
