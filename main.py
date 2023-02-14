@@ -1,10 +1,8 @@
 from dash import callback_context, dcc, html, Dash
 from dash.dependencies import Input, Output, State
-from dash.exceptions import PreventUpdate
-from services.pokeservice import main
+
 from entidades.cortipopokemon import Cor
 import dash_bootstrap_components as dbc
-from asyncio import run
 from componentes.telas import gera_tabs
 
 context = html.Div(id='id_page_content')
