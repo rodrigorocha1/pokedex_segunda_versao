@@ -10,7 +10,7 @@ from services.pokeservice import main
 
 
 def layout_pokemon_id(pokemon: Pokemom):
-    dbc.Row(
+    return dbc.Row(
         dbc.Col(
             [
                 dbc.Card(
