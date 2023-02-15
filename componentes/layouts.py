@@ -91,7 +91,6 @@ class Layouts:
                 ] + opcoes_pokemon
 
         else:
-            print('pokemon unico', inicio, fim, id_pokemon)
             pokemon_unico = run(main(inicio, fim, id_pokemon))
             return self.__gerar_cartao(pokemon=pokemon_unico), \
                 [

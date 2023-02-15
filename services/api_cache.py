@@ -21,7 +21,6 @@ class APICache:
             pickle.dump(pokemons, f)
 
     def abrir_cache(self, nome_geracao) -> List[Pokemom]:
-        print('dentro do método de abrir_cache ', nome_geracao)
         """
             Método para abrir o cache
         :param nome_geracao: nome da geração
