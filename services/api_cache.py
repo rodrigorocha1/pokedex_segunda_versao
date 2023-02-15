@@ -7,7 +7,7 @@ from typing import List
 class APICache:
 
     def __init__(self):
-        self.__caminho = os.getcwd() + '\\caches\\'
+        self.__caminho = os.getcwd() + '\\cache\\'
 
     def salvar_cache(self, nome_geracao: str, pokemons: List[Pokemom]):
         print('dentro do método de salvar_cache ')
