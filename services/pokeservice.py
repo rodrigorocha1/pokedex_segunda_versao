@@ -1,10 +1,9 @@
 import asyncio
 import atexit
-import os.path
 from typing import List
 from services.pokeapi import PokeAPI
 from entidades.pokemon import Pokemom
-from api_cache import APICache
+from services.api_cache import APICache
 
 
 class PokemonService:
