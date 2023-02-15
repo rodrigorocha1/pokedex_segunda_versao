@@ -1,4 +1,5 @@
 import asyncio
+import atexit
 import os.path
 from typing import List
 from services.pokeapi import PokeAPI
@@ -47,11 +48,15 @@ service = PokemonService(api)
 async def main(inicio, fim, id_pokemon=None, id_geracao=None) -> List[Pokemom]:
     apicache = APICache()
     if id_pokemon is None or id_pokemon == 0:
-        pokemons = await service.get_lista_pokemons(inicio, fim) \
-            if apicache.verificar_aquivo(id_geracao) is False \
-            else apicache.abrir_cache(id_geracao)
+        if apicache.verificar_aquivo(id_geracao) is False:
+            pokemons = await service.get_lista_pokemons(inicio, fim)
+            apicache.salvar_cache(id_geracao, pokemons)
+        else:
+            pokemons = apicache.abrir_cache(id_geracao)
     else:
         pokemons = await service.obter_dados_pokemon_id(id_pokemon)
+
+    atexit.register(lambda: apicache.__del__() if apicache else None)
     return pokemons
 
 

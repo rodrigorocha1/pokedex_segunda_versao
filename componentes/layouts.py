@@ -25,28 +25,41 @@ class Layouts:
 
         if tab == 'id_primeira_geracao':
             inicio = 1
-            fim = 6
+            fim = 151
             return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
 
         elif tab == 'id_segunda_geracao':
             inicio = 152
-            fim = 158 # 251
+            fim = 251
             return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
         elif tab == 'id_terceira_geracao':
-            return '3'
+            inicio = 252
+            fim = 386
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
         elif tab == 'id_quarta_geracao':
-            return '4'
+            inicio = 387
+            fim = 493
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
         elif tab == 'id_quinta_geracao':
-            return '5'
+            inicio = 494
+            fim = 649
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
         elif tab == 'id_sexta_geracao':
-            return '6'
+            inicio = 650
+            fim = 721
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
         elif tab == 'id_setima_geracao':
-            return '7'
+            inicio = 722
+            fim = 809
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
         elif tab == 'id_oitava_geracao':
-            return '8'
+            inicio = 810
+            fim = 905
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
         elif tab == 'id_nona_geracao':
             inicio = 906
             fim = 1008
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
 
         return html.P('Não selecionado')
 
