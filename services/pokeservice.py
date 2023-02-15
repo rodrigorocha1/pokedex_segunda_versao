@@ -1,8 +1,9 @@
 import asyncio
+import os.path
 from typing import List
-import requests
 from services.pokeapi import PokeAPI
 from entidades.pokemon import Pokemom
+from api_cache import APICache
 
 
 class PokemonService:
@@ -43,17 +44,16 @@ api = PokeAPI()
 service = PokemonService(api)
 
 
-async def main(inicio, fim, id_pokemon=None) -> List[Pokemom]:
+async def main(inicio, fim, id_pokemon=None, id_geracao=None) -> List[Pokemom]:
+    apicache = APICache()
     if id_pokemon is None or id_pokemon == 0:
-        pokemons = await service.get_lista_pokemons(inicio, fim)
+        pokemons = await service.get_lista_pokemons(inicio, fim) \
+            if apicache.verificar_aquivo(id_geracao) is False \
+            else apicache.abrir_cache(id_geracao)
     else:
         pokemons = await service.obter_dados_pokemon_id(id_pokemon)
-
-
-
     return pokemons
 
 
 if __name__ == '__main__':
     asyncio.run(main(906, 1008))
-

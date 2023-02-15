@@ -12,10 +12,11 @@ class Layouts:
         Classe para gerar o layout dos pokemons
     '''
 
-    def gerar_tabs(self, tab, tipo=None, id_pokemon=None):
+    def gerar_tabs(self, tab, tipo=None, id_pokemon=None, id_geracao=None):
 
         '''
             Função para controlar as mudanças de seleção dos pokemons
+        :param id_geracao: id da geracao do pokemon
         :param tab: recebe a tab selecionado
         :param tipo: Recebe o tipo do pokemon clicado no botão
         :param id_pokemon: recebe o id do pokemon
@@ -25,12 +26,12 @@ class Layouts:
         if tab == 'id_primeira_geracao':
             inicio = 1
             fim = 6
-            return self.__controle_tabs(inicio, fim, id_pokemon, tipo)
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
 
         elif tab == 'id_segunda_geracao':
             inicio = 152
-            fim = 251
-
+            fim = 158 # 251
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
         elif tab == 'id_terceira_geracao':
             return '3'
         elif tab == 'id_quarta_geracao':
@@ -49,7 +50,7 @@ class Layouts:
 
         return html.P('Não selecionado')
 
-    def __controle_tabs(self, inicio: int, fim: int, id_pokemon: str, tipo: str):
+    def __controle_tabs(self, inicio: int, fim: int, id_pokemon: str, tipo: str, id_geracao: str):
         '''
             Método para devolver um ou varios cartão
         :param inicio: ínicio das listagens do pokemon
@@ -58,12 +59,15 @@ class Layouts:
         :param tipo: tipo do pokemon selecionado
         :return: um ou vários cartões, depedendo do que for selecionado
         '''
-        lista_pokemons = run(main(inicio, fim))
+
+        lista_pokemons = run(main(inicio, fim, id_pokemon=None, id_geracao=id_geracao))
+
         opcoes_pokemon = [
             {'label': f'{pokemon.id} - {pokemon.name.title()}',
-             'value': f'{pokemon.id}'}
+                'value': f'{pokemon.id}'}
             for pokemon in lista_pokemons
         ]
+
         if id_pokemon is None or id_pokemon == '0':
             return self.__gerar_cartoes(pokemons=lista_pokemons, tipo=tipo), \
                 [
@@ -74,6 +78,7 @@ class Layouts:
                 ] + opcoes_pokemon
 
         else:
+            print('pokemon unico', inicio, fim, id_pokemon)
             pokemon_unico = run(main(inicio, fim, id_pokemon))
             return self.__gerar_cartao(pokemon=pokemon_unico), \
                 [
