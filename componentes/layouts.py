@@ -60,6 +60,42 @@ class Layouts:
             inicio = 906
             fim = 1008
             return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
+        elif tab == 'id_outras_formas':
+            inicio = 10001
+            fim = 10032
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
+        elif tab == 'id_mega_formas':
+            inicio = 10033
+            fim = 10090
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
+        elif tab == 'id_alola_formas':
+            inicio = 10091
+            fim = 10115
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
+        elif tab == 'id_formas':
+            inicio = 10116
+            fim = 10160
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
+        elif tab == 'id_galar_formas':
+            inicio = 10161
+            fim = 10180
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
+        elif tab == 'id_mais_formas':
+            inicio = 10182
+            fim = 10194
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
+        elif tab == 'id_gmax_formas':
+            inicio = 10195
+            fim = 10228
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
+        elif tab == 'id_hisui_formas':
+            inicio = 10229
+            fim = 10244
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
+        elif tab == 'id_origin_formas':
+            inicio = 10245
+            fim = 10249
+            return self.__controle_tabs(inicio, fim, id_pokemon, tipo, id_geracao=id_geracao)
 
         return html.P('Não selecionado')
 
@@ -77,7 +113,7 @@ class Layouts:
 
         opcoes_pokemon = [
             {'label': f'{pokemon.id} - {pokemon.name.title()}',
-                'value': f'{pokemon.id}'}
+             'value': f'{pokemon.id}'}
             for pokemon in lista_pokemons
         ]
 
