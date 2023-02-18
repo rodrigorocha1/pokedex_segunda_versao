@@ -10,7 +10,6 @@ class APICache:
         self.__caminho = os.getcwd() + '\\cache\\'
 
     def salvar_cache(self, nome_geracao: str, pokemons: List[Pokemom]):
-        print('dentro do método de salvar_cache ')
         """
             Método para gravar o cache por geração
         :param nome_geracao: nome da geração lista do pokemo

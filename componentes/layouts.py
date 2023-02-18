@@ -180,6 +180,8 @@ class Layouts:
                                className='class_nome_pokemon'),
                         html.P(f' - '.join(pokemon.tipos).title(),
                                className='class_nome_pokemon'),
+                        html.P(pokemon.geracao.title(),
+                               className='class_nome_pokemon'),
                         dbc.Tabs(
                             [
                                 dbc.Tab(
